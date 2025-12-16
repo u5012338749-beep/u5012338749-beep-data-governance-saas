@@ -1,7 +1,6 @@
 import { useQuery } from '@tanstack/react-query';
 import { useLocation } from 'wouter';
 import { api } from '@/lib/api';
-import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 
 export default function Tenants() {

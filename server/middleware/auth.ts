@@ -3,12 +3,17 @@ import { db } from '../db';
 import { tenantMembers } from '../../shared/schema';
 import { eq, and } from 'drizzle-orm';
 
+declare global {
+  namespace Express {
+    interface User {
+      id: string;
+      email: string;
+      name?: string;
+    }
+  }
+}
+
 export interface AuthenticatedRequest extends Request {
-  user?: {
-    id: string;
-    email: string;
-    name?: string;
-  };
   tenantId?: string;
   userRole?: 'owner' | 'admin' | 'member';
 }

@@ -64,7 +64,7 @@ router.post('/register', validate(registerSchema), async (req, res, next) => {
     }
 
     // Auto login after registration
-    req.login({ id: newUser.id, email: newUser.email, name: newUser.name }, (err) => {
+    req.login({ id: newUser.id, email: newUser.email, name: newUser.name || undefined }, (err) => {
       if (err) return next(err);
       
       res.json({

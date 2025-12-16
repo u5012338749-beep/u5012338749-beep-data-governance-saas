@@ -30,7 +30,7 @@ passport.use(
         return done(null, {
           id: user.id,
           email: user.email,
-          name: user.name,
+          name: user.name || undefined,
         });
       } catch (error) {
         return done(error);
@@ -56,7 +56,7 @@ passport.deserializeUser(async (id: string, done) => {
     done(null, {
       id: user.id,
       email: user.email,
-      name: user.name,
+      name: user.name || undefined,
     });
   } catch (error) {
     done(error);
