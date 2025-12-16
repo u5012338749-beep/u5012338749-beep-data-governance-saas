@@ -88,7 +88,7 @@ export default function Members() {
                   <label className="text-sm font-medium">Role</label>
                   <select
                     value={formData.role}
-                    onChange={(e) => setFormData({ ...formData, role: e.target.value as any })}
+                    onChange={(e) => setFormData({ ...formData, role: e.target.value as 'admin' | 'member' })}
                     className="w-full h-10 rounded-md border border-gray-300 px-3"
                   >
                     <option value="member">Member</option>

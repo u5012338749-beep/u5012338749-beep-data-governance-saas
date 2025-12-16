@@ -165,13 +165,17 @@ router.post('/:tenantId/jobs/:id/run', requireAuth, requireTenantAccess, require
 
     // Simulate job execution (in a real app, this would be async)
     setTimeout(async () => {
-      await db.update(jobRuns)
-        .set({
-          status: 'completed',
-          completedAt: new Date(),
-          result: { message: 'Job completed successfully' },
-        })
-        .where(eq(jobRuns.id, run.id));
+      try {
+        await db.update(jobRuns)
+          .set({
+            status: 'completed',
+            completedAt: new Date(),
+            result: { message: 'Job completed successfully' },
+          })
+          .where(eq(jobRuns.id, run.id));
+      } catch (error) {
+        console.error('Error updating job run:', error);
+      }
     }, 1000);
 
     res.json({ run });
