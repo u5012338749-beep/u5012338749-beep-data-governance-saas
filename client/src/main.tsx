@@ -1,3 +1,6 @@
+import { injectSpeedInsights } from '@vercel/speed-insights';
+
+injectSpeedInsights();
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import App from './App';
